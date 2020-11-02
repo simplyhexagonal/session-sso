@@ -57,4 +57,4 @@ SSO providers:
 Session SSO also lets you easily implement both the first and second verification steps on your
 back-end so that you too can become an SSO provider if you so desire.
 
-For more details be sure to take a look at the module's [README.md](https://github.com/jeanlescure/session-sso/README.md) documentation.
+For more details be sure to take a look at the module's [README.md](https://github.com/jeanlescure/session-sso/blob/main/README.md) documentation.

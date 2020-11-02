@@ -13,7 +13,7 @@ In other words, if you find a bug or want a new feature, please help us by becom
 
 ## New to Single Sign On (SSO) integrations?
 
-We suggest taking a look at the [STRATEGY.md](https://github.com/jeanlescure/session-sso/STRATEGY.md) document before moving forward here.
+We suggest taking a look at the [STRATEGY.md](https://github.com/jeanlescure/session-sso/blob/main/STRATEGY.md) document before moving forward here.
 
 ## Like this project? ❤️
 
@@ -185,7 +185,7 @@ const verifyCustomResult = await sso.verifySSO({
 ## 🚨 Where to place this library in your code/API (or "I'm new to SSO, and confused")
 
 We've provided a handy and easy to understand explanation of a proper SSO strategy and where this
-library is meant to be used, just take a look at the [STRATEGY.md](https://github.com/jeanlescure/session-sso/STRATEGY.md) document.
+library is meant to be used, just take a look at the [STRATEGY.md](https://github.com/jeanlescure/session-sso/blob/main/STRATEGY.md) document.
 
 ## Development and build scripts
 

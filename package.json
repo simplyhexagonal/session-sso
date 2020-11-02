@@ -1,0 +1,35 @@
+{
+  "name": "session-sso",
+  "version": "0.9.0",
+  "description": "Simple session SSO library to log in with Google, Github, Facebook, or a custom OAuth2 implementation",
+  "main": "dist/index.js",
+  "typings": "typings",
+  "author": "Jean M. Lescure",
+  "license": "Apache-2.0",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "concurrently \"rollup -cw\" \"nodemon --inspect\"",
+    "prepare": "yarn link && yarn link session-sso",
+    "gen:certs-json": "ts-node gen-certs-json.ts"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^15.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@rollup/plugin-replace": "^2.3.3",
+    "@types/jsonwebtoken": "^8.5.0",
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.4",
+    "rollup": "^2.27.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.27.2",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.3"
+  },
+  "dependencies": {
+    "encoding": "^0.1.13",
+    "jsonwebtoken": "^8.5.1",
+    "node-fetch": "^2.6.1",
+    "short-unique-id": "^3.0.5"
+  }
+}

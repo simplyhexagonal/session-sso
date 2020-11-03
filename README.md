@@ -64,7 +64,7 @@ By default the library will fetch the user's email since it's the most common de
 Google, Facebook, and GitHub's tokens.
 
 If your provider allows you to fetch other scopes with your Client/Dev credentials, then you can
-override which user properties are returned by `verifySSO` by passing the a `string[]` usinf the
+override which user properties are returned by `verifySSO` by passing the a `string[]` using the
 `retrieveProperties` option like so:
 
 ```ts

@@ -192,12 +192,11 @@ library is meant to be used, just take a look at the [STRATEGY.md](https://githu
 I chose Rollup to handle the transpiling, compression, and any other transformations needed to get
 your Typescript code running as quickly and performant as possible.
 
-This repo uses `runkit.js` to validate your code's sanity. Why? Because [www.npmjs.com](https://www.npmjs.com/)
-uses [Runkit](https://runkit.com/home) to allow potential users to play with your module, live on
-their browser, which is one of the best ways to convince someone to use your modules in their code.
-Runkit will look for the `runkit.js` by default and display that as the initial playground for the
+This repo uses `runkit.js` to validate our code's sanity. Why? Because [www.npmjs.com](https://www.npmjs.com/)
+uses [Runkit](https://runkit.com/home) to allow potential users to play with our module, live on
+their browser. Runkit will look for the `runkit.js` by default and display that as the initial playground for the
 user, so by making it the default validation method during development, this encourages proper
-communication with the users of your code.
+communication with the users of our code.
 
 **Development**
 

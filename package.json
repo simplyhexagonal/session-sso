@@ -7,9 +7,10 @@
   "author": "Jean M. Lescure",
   "license": "Apache-2.0",
   "scripts": {
-    "build": "rollup -c",
-    "dev": "concurrently \"rollup -cw\" \"nodemon --inspect\"",
-    "prepare": "yarn link && yarn link session-sso",
+    "rm:dist": "rm -rf dist/*",
+    "dev": "yarn rm:dist && concurrently \"rollup -cw\" \"nodemon --inspect\"",
+    "build": "yarn rm:dist && NODE_ENV=production rollup -c",
+    "prepare": "yarn link && yarn link no-bs-typescript-boilerplate",
     "gen:certs-json": "ts-node gen-certs-json.ts"
   },
   "devDependencies": {

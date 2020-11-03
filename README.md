@@ -21,7 +21,7 @@ Please consider:
 
 - [Buying me a coffee](https://www.buymeacoffee.com/jeanlescure) ☕
 - Supporting me on [Patreon](https://www.patreon.com/jeanlescure) 🏆
-- Starring this repo on [Github](https://github.com/jeanlescure/string-crypto) 🌟
+- Starring this repo on [Github](https://github.com/jeanlescure/session-sso) 🌟
 
 ## How to get started using this module?
 

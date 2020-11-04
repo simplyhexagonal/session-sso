@@ -19,7 +19,7 @@ export default <SSOGenerator>((
           pem: privateKey,
         }) => {
           resolve({
-            token: jwt.sign(payload, privateKey, { algorithm: 'RS256', keyid })
+            token: jwt.sign(payload, privateKey, { algorithm: 'RS256', keyid, }),
           });
         }).catch((e) => {
           reject(e.message);
@@ -30,5 +30,5 @@ export default <SSOGenerator>((
     } catch (e) {
       reject(e.message);
     }
-  }).then((payload) => ({ payload })).catch(((error) => ({ error })));
+  }).then((payload) => ({ payload, })).catch(((error) => ({ error, })));
 });

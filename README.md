@@ -82,11 +82,13 @@ await sso.verifySSO({
 
 // would return:
 // {
-//   "email": "kahless@t-kuv.ma",
-//   "email_verified": true,
-//   "given_name": "Kahless",
-//   "family_name": "-",
-//   "locale": "tlh"
+//   payload: {
+//     "email": "kahless@t-kuv.ma",
+//     "email_verified": true,
+//     "given_name": "Kahless",
+//     "family_name": "-",
+//     "locale": "tlh"
+//   }
 // }
 ```
 
@@ -168,7 +170,6 @@ const {
 now any front-end using your authentication end-point can verify that the token hasn't been forged
 by sending it back to your API where you do will do a very similar check as with google, facebook, and github:
 
-
 ```ts
 // This is the only extra step. With google, facebook, and github we already know where the verification
 // comes from, so we baked it in; but here you get to set your own rule as to where to 
@@ -181,6 +182,33 @@ const verifyCustomResult = await sso.verifySSO({
   authKey: token as string,
 });
 ```
+
+## Error handling
+
+Both `verifySSO` and `generateSSO` promises will return an object with **only one property**,
+either `payload` or `error`.
+
+On success, both `verifySSO` and `generateSSO` will resolve with an object with the `payload`
+property, for example:
+
+```js
+{
+  payload: {
+    //...
+  }
+}
+```
+
+On error, both `verifySSO` and `generateSSO` will reject with an object with the `error` property,
+for example:
+
+```js
+{
+  error: "..."
+}
+```
+
+**Note:** the value of the `error` property is a string.
 
 ## 🚨 Where to place this library in your code/API (or "I'm new to SSO, and confused")
 

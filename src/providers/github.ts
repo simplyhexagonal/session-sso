@@ -1,13 +1,13 @@
 import fetch from 'node-fetch';
 
-import { SSOProvider } from '../interfaces';
+import { SSOProvider, } from '../interfaces';
 
 export default <SSOProvider>((
   {
     clientId,
     clientSecret,
     authKey: code,
-    retrieveProperties = ['email'],
+    retrieveProperties = ['email',],
   },
 ) => {
   return new Promise((resolve, reject) => {
@@ -31,39 +31,45 @@ export default <SSOProvider>((
           }),
         },
       )
-      .then((res) => res.json())
-      .then(({access_token: apiToken}) => {
-        if (!apiToken) {
-          throw new Error('code invalid');
-        }
-
-        fetch(
-          'https://api.github.com/user',
-          {
-            headers: {
-              'Authorization': `token ${apiToken}`,
-              'Content-Type': 'application/json',
-              'Accept': 'application/json',
-            }
+        .then((res) => res.json())
+        .then(({access_token: apiToken,}) => {
+          if (!apiToken) {
+            throw new Error('code invalid');
           }
-        ).then((res) => res.json())
-          .then((authPayload) => {
-            if (!retrieveProperties.reduce((a, b) => a && Object.keys(authPayload).includes(b), true)) {
-              throw new Error('properties missing in auth payload');
+
+          fetch(
+            'https://api.github.com/user',
+            {
+              headers: {
+                'Authorization': `token ${apiToken}`,
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+              },
             }
-            
-            const payload: { [key: string]: any } = retrieveProperties.reduce((a, b) => a[b] = authPayload[b], {});
-            
-            resolve(payload);
-          }).catch((e) => {
-            reject(e.message);
-          });
-      })
-      .catch((e) => {
-        reject(e.message);
-      });
+          ).then((res) => res.json())
+            .then((authPayload) => {
+              if (!retrieveProperties.reduce((a, b) => a && Object.keys(authPayload).includes(b), true)) {
+                throw new Error('properties missing in auth payload');
+              }
+
+              const payload: { [key: string]: { [key: string]: unknown } } = retrieveProperties.reduce(
+                (a, b) => {
+                  a[b] = authPayload[b];
+                  return a;
+                },
+                {},
+              );
+
+              resolve(payload);
+            }).catch((e) => {
+              reject(e.message);
+            });
+        })
+        .catch((e) => {
+          reject(e.message);
+        });
     } catch (e) {
       reject(e.message);
     }
-  }).then((payload) => ({ payload })).catch(((error) => ({ error })));
+  }).then((payload) => ({ payload, })).catch(((error) => ({ error, })));
 });

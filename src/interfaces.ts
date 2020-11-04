@@ -7,11 +7,11 @@ export interface SSOProviderOptions {
   authKey: string;
   retrieveProperties?: string[];
   publicKeyPromise?: Promise<PEMKeyPromisePayload>;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export interface SSOPromiseResultSuccess {
-  payload: { [key: string]: any };
+  payload: { [key: string]: unknown };
 }
 
 export interface SSOPromiseResultFail {
@@ -25,13 +25,13 @@ export interface SSOProvider {
 export interface AuthorizationPromisePayload {
   iss: number;
   exp: number;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export interface SSOGeneratorOptions {
   authorizationPromise: Promise<AuthorizationPromisePayload>;
   privateKeyPromise: Promise<PEMKeyPromisePayload>;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export interface SSOGenerator {

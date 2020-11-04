@@ -11,7 +11,7 @@ import {
   SSOGeneratorMap,
   SessionSSOOptions,
   GenerateSSO,
-  VerifySSO
+  VerifySSO,
 } from './interfaces';
 
 export * from './interfaces';
@@ -30,7 +30,7 @@ const ssoGenerators: Partial<SSOGeneratorMap> = {
 class SessionSSO {
   defaultProvider: keyof SSOProviderMap;
   defaultGenerator: keyof SSOGeneratorMap;
-  providerSpecificOptions: { [key: string]: any };
+  providerSpecificOptions: { [key: string]: unknown };
 
   constructor(
     {
@@ -80,6 +80,6 @@ class SessionSSO {
       ...providerSpecificOptions,
     });
   });
-};
+}
 
 export default SessionSSO;

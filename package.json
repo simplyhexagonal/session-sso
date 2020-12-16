@@ -1,6 +1,6 @@
 {
   "name": "session-sso",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple session SSO library to log in with Google, Github, Facebook, or a custom OAuth2 implementation",
   "keywords": [
     "authorization",

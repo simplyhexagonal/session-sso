@@ -2,10 +2,28 @@
   "name": "session-sso",
   "version": "1.0.0",
   "description": "Simple session SSO library to log in with Google, Github, Facebook, or a custom OAuth2 implementation",
+  "keywords": [
+    "authorization",
+    "access control",
+    "single sign-on",
+    "sso",
+    "google",
+    "facebook",
+    "github",
+    "custom sso",
+    "auth",
+    "restrict",
+    "authorize"
+  ],
   "main": "dist/index.js",
   "typings": "typings",
   "author": "Jean M. Lescure",
   "license": "Apache-2.0",
+  "homepage": "https://github.com/jeanlescure/session-sso",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeanlescure/session-sso"
+  },
   "scripts": {
     "lint": "eslint ./specs ./src --ext .ts",
     "lint:fix": "eslint --fix ./specs ./src --ext .ts",
@@ -34,7 +52,7 @@
     "rollup-plugin-typescript2": "^0.27.2",
     "standard-version": "^8.0.2",
     "ts-node": "^9.0.0",
-    "typescript": "^4.0.3"
+    "typescript": "^4.1.2"
   },
   "dependencies": {
     "encoding": "^0.1.13",

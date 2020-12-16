@@ -15,7 +15,7 @@ In other words, if you find a bug or want a new feature, please help us by becom
 
 ## Before you continue
 
-- If you are also looking to implement role-based access control (RBAC), take a look at [session-sso]()
+- If you are also looking to implement role-based access control (RBAC), take a look at [DoorLock](https://www.npmjs.com/package/doorlock)
 - If you'd like to build Typescript packages like this one, check out the [No BS Typescript Boilerplate](https://github.com/jeanlescure/no-bs-typescript-boilerplate)
 
 ## New to Single Sign On (SSO) integrations?

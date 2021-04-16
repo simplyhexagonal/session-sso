@@ -29,9 +29,9 @@
     "lint:fix": "eslint --fix ./specs ./src --ext .ts",
     "rm:dist": "rm -rf dist/*",
     "dev": "yarn rm:dist && concurrently \"rollup -cw\" \"nodemon --inspect\"",
-    "test": "yarn lint && node -r dotenv/config runkit.js && ts-node -r dotenv/config specs/test.ts",
+    "test": "node -r dotenv/config runkit.js && ts-node -r dotenv/config specs/test.ts",
     "build": "yarn rm:dist && NODE_ENV=production rollup -c && yarn test",
-    "prepare": "yarn link && yarn link no-bs-typescript-boilerplate",
+    "prepare": "yarn link && yarn link session-sso",
     "gen:certs-json": "ts-node gen-certs-json.ts",
     "release": "standard-version"
   },

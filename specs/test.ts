@@ -1,6 +1,7 @@
 import assert from 'assert';
 import SessionSSO, {
-  PEMKeyPromisePayload,
+  PRIVKeyPromisePayload,
+  PUBKeyPromisePayload,
   SSOPromiseResultFail,
   SSOPromiseResultSuccess,
 } from 'session-sso';
@@ -45,7 +46,7 @@ const sso = new SessionSSO({
     email: 'user-email-address@gmail.com',
   });
 
-  const privateKeyPromise: Promise<PEMKeyPromisePayload> = fetch(
+  const privateKeyPromise: Promise<PRIVKeyPromisePayload> = fetch(
     CUSTOM_PRIVATE_CERTS_URL || 'https://your.static.website/certs.priv.json',
     {
       headers: {
@@ -79,7 +80,7 @@ const sso = new SessionSSO({
     },
   } = ssoGenResult as SSOPromiseResultSuccess;
 
-  const publicKeyPromise: Promise<PEMKeyPromisePayload> = fetch(
+  const publicKeyPromise: Promise<PUBKeyPromisePayload> = fetch(
     CUSTOM_PUBLIC_CERTS_URL || 'https://your.static.website/certs.json',
     {
       headers: {

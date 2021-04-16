@@ -1,12 +1,16 @@
-export interface PEMKeyPromisePayload {
+export interface PRIVKeyPromisePayload {
   kid: string;
   pem: string;
+}
+
+export interface PUBKeyPromisePayload {
+  [k: string]: string;
 }
 
 export interface SSOProviderOptions {
   authKey: string;
   retrieveProperties?: string[];
-  publicKeyPromise?: Promise<PEMKeyPromisePayload>;
+  publicKeyPromise?: Promise<PUBKeyPromisePayload>;
   [key: string]: unknown;
 }
 
@@ -30,7 +34,7 @@ export interface AuthorizationPromisePayload {
 
 export interface SSOGeneratorOptions {
   authorizationPromise: Promise<AuthorizationPromisePayload>;
-  privateKeyPromise: Promise<PEMKeyPromisePayload>;
+  privateKeyPromise: Promise<PRIVKeyPromisePayload>;
   [key: string]: unknown;
 }
 

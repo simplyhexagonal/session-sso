@@ -2784,10 +2784,10 @@ shelljs@^0.8.3:
     interpret "^1.0.0"
     rechoir "^0.6.2"
 
-short-unique-id@^4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/short-unique-id/-/short-unique-id-4.3.0.tgz#85d11efaf533f82ee9249bef7e344d0365db531a"
-  integrity sha512-7jDpqSvEgs/AdJ+NzOsn5Ajip4a1KeeArmC+nY4dSSMsGisoOWnVBokkvlqzDrSwBW/QafMtjADXbr/YzwHYBQ==
+short-unique-id@^4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/short-unique-id/-/short-unique-id-4.3.1.tgz#75558753e4113f1bc6de5e81db6493882bbabdcd"
+  integrity sha512-vH0/ydKGdgeCtwbOzzSGisH8qIfj1PqpNDNu44e0TGBPhNbT/k6+s/a8i/8r0qO3oHRwbt+bDDKvECAnFk53IQ==
 
 signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.3"

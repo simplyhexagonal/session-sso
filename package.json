@@ -58,6 +58,6 @@
     "encoding": "^0.1.13",
     "jsonwebtoken": "^8.5.1",
     "node-fetch": "^2.6.1",
-    "short-unique-id": "^4.3.0"
+    "short-unique-id": "^4.3.1"
   }
 }

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/utils/index.ts"],
+  "sourcesContent": ["export default class SSOUtils {\n  static normalizeServerResponse = (res: any) => {\n    // console.log(res);\n    if (res.status === 200) {\n      return res.data;\n    } else {\n      throw new Error(`${res.status} ${res.statusText} ${res.data}`);\n    }\n  }\n}\n"],
+  "mappings": ";;;;;;;AAAA;AAAA;AAAA;AAAA,eAA8B;AAAA;AACrB,AADT,SACS,0BAA0B,CAAC,QAAa;AAE7C,MAAI,IAAI,WAAW,KAAK;AACtB,WAAO,IAAI;AAAA,SACN;AACL,UAAM,IAAI,MAAM,GAAG,IAAI,UAAU,IAAI,cAAc,IAAI;AAAA;AAAA;",
+  "names": []
+}

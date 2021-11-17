@@ -33,8 +33,8 @@ export interface AuthorizationPromisePayload {
 }
 
 export interface SSOGeneratorOptions {
-  authorizationPromise: Promise<AuthorizationPromisePayload>;
-  privateKeyPromise: Promise<PRIVKeyPromisePayload>;
+  authorizationPromise: Promise<AuthorizationPromisePayload> | unknown;
+  privateKeyPromise: Promise<PRIVKeyPromisePayload> | unknown;
   [key: string]: unknown;
 }
 

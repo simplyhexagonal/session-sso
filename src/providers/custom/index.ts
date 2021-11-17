@@ -1,6 +1,9 @@
-import jwt from 'jsonwebtoken';
+import jwt, {
+  Jwt,
+  JwtPayload,
+} from 'jsonwebtoken';
 
-import { SSOProvider, } from '../interfaces';
+import { PUBKeyPromisePayload, SSOProvider } from '../../interfaces';
 
 export default <SSOProvider>((
   {
@@ -15,11 +18,14 @@ export default <SSOProvider>((
         header: {
           kid,
         },
-      } = jwt.decode(token, { complete: true, }) as {[key: string]: {[key: string]: unknown}};
+      } = jwt.decode(token, { complete: true, }) as Jwt;
 
-      publicKeyPromise
-        .then((jpems) => {
-          const authPayload = jwt.verify(token, jpems[kid as string], { algorithms: ['RS256',], });
+      (publicKeyPromise as Promise<PUBKeyPromisePayload>).then((jpems) => {
+          const authPayload = jwt.verify(
+            token,
+            jpems[kid as string],
+            { algorithms: ['RS256',],
+          }) as JwtPayload;
 
           if (!retrieveProperties.reduce((a, b) => a && Object.keys(authPayload).includes(b), true)) {
             throw new Error('properties missing in auth payload');
@@ -30,7 +36,7 @@ export default <SSOProvider>((
               a[b] = authPayload[b];
               return a;
             },
-            {},
+            {} as { [key: string]: { [key: string]: unknown } },
           );
 
           resolve(payload);
@@ -38,7 +44,7 @@ export default <SSOProvider>((
         .catch((e) => {
           reject(e.message);
         });
-    } catch (e) {
+    } catch (e: any) {
       reject(e.message);
     }
   }).then((payload) => ({ payload, })).catch(((error) => ({ error, })));

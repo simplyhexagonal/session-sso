@@ -1,4 +1,3 @@
-
 import googleProvider from './providers/google';
 import facebookProvider from './providers/facebook';
 import githubProvider from './providers/github';
@@ -12,9 +11,12 @@ import {
   SessionSSOOptions,
   GenerateSSO,
   VerifySSO,
+  SSOGenerator,
+  SSOProvider,
 } from './interfaces';
 
-export * from './interfaces';
+// @ts-ignore
+export { version } from '../package.json';
 
 const ssoProviders: Partial<SSOProviderMap> = {
   google: googleProvider,
@@ -55,7 +57,7 @@ class SessionSSO {
       throw new Error('cannot perform custom sso without auth and private key promises');
     }
 
-    return ssoGenerators[generator]({
+    return (ssoGenerators[generator] as SSOGenerator)({
       authorizationPromise,
       privateKeyPromise,
     });
@@ -73,7 +75,7 @@ class SessionSSO {
       throw new Error('cannot perform custom sso without a public key');
     }
 
-    return await ssoProviders[provider]({
+    return await (ssoProviders[provider] as SSOProvider)({
       authKey,
       retrieveProperties,
       ...this.providerSpecificOptions,

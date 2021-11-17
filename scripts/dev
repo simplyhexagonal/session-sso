@@ -1,0 +1,3 @@
+#! /usr/bin/env bash
+
+ts-node-dev --respawn src/index.test.ts

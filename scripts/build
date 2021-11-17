@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+MODULE_NAME=session-sso
+GLOBAL_NAME=SessionSSO
+
+rm -rf dist/*
+
+tsc -d --emitDeclarationOnly --rootDir src --outDir dist || exit 1
+
+esbuild src/index.ts \
+  --platform=node \
+  --outfile=dist/$MODULE_NAME.js \
+  --sourcemap --format=cjs --global-name=$GLOBAL_NAME \
+  && mv dist/index.d.ts dist/$MODULE_NAME.d.ts \
+  && refup dist/$MODULE_NAME.js $GLOBAL_NAME --no-default \
+  || exit 2
+
+cd src
+
+for f in $(find . -name '*.ts' -not -wholename './in*.ts'); do
+  esbuild $f \
+  --platform=node \
+  --outfile=$(dirname ../dist/$f)/$(basename -s .ts $f).js \
+  --sourcemap --format=cjs \
+  || exit 3
+done
+
+cd ..
+
+cat ./dist/interfaces.d.ts >> ./dist/$MODULE_NAME.d.ts
+tail -n +2 ./dist/$MODULE_NAME.d.ts > ./dist/$MODULE_NAME.d.ts.tmp
+cat ./dist/$MODULE_NAME.d.ts.tmp > ./dist/$MODULE_NAME.d.ts
+rm ./dist/interfaces.d.ts ./dist/$MODULE_NAME.d.ts.tmp

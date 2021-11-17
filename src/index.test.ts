@@ -1,11 +1,13 @@
+require('dotenv').config();
 import assert from 'assert';
+import SSOUtils from '../dist/utils';
 import SessionSSO, {
   PRIVKeyPromisePayload,
   PUBKeyPromisePayload,
   SSOPromiseResultFail,
   SSOPromiseResultSuccess,
-} from 'session-sso';
-import fetch from 'node-fetch';
+} from '../dist/session-sso';
+import axios from 'axios';
 
 const {
   GOOGLE_TOKEN,
@@ -46,17 +48,17 @@ const sso = new SessionSSO({
     email: 'user-email-address@gmail.com',
   });
 
-  const privateKeyPromise: Promise<PRIVKeyPromisePayload> = fetch(
+  const privateKeyPromise: Promise<PRIVKeyPromisePayload> = axios.get(
     CUSTOM_PRIVATE_CERTS_URL || 'https://your.static.website/certs.priv.json',
     {
       headers: {
         // pro-tip: you can use "aws:Referer" in S3 bucket policy to restrict access to files by
         // sending a token via the HTTP Referer Header ;)
         // https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html#example-bucket-policies-use-case-4
-        'Referer': CUSTOM_CERT_URL_TOKEN,
+        'Referer': CUSTOM_CERT_URL_TOKEN || '',
       },
     },
-  ).then((res) => res.json()).then((jpems) => {
+  ).then(SSOUtils.normalizeServerResponse).then((jpems) => {
     const randomKeyId = Object.keys(jpems).sort(() => Math.random() - 0.5)[0];
 
     return {
@@ -80,16 +82,16 @@ const sso = new SessionSSO({
     },
   } = ssoGenResult as SSOPromiseResultSuccess;
 
-  const publicKeyPromise: Promise<PUBKeyPromisePayload> = fetch(
+  const publicKeyPromise: Promise<PUBKeyPromisePayload> = axios.get(
     CUSTOM_PUBLIC_CERTS_URL || 'https://your.static.website/certs.json',
     {
       headers: {
         // you can use "aws:Referer" in S3 bucket policy to restrict access to files ;)
         // https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html#example-bucket-policies-use-case-4
-        'Referer': CUSTOM_CERT_URL_TOKEN,
+        'Referer': CUSTOM_CERT_URL_TOKEN || '',
       },
     },
-  ).then((res) => res.json());
+  ).then(SSOUtils.normalizeServerResponse) as Promise<PUBKeyPromisePayload>;
 
   const verifyCustomResult = await sso.verifySSO({
     publicKeyPromise,
@@ -126,11 +128,15 @@ const sso = new SessionSSO({
   // check all results include the 'email' in the 'payload'
   assert(
     results.reduce(
-      (a, b) => (
-        a
-        && 'payload' in b
-        && 'email' in b.payload
-      ),
+      (a, b) => {
+        console.log(b);
+
+        return Boolean(
+          a
+          && 'payload' in b
+          && 'email' in b.payload
+        );
+      },
       true,
     ),
   );

@@ -30,4 +30,4 @@ cd ..
 cat ./dist/interfaces.d.ts >> ./dist/$MODULE_NAME.d.ts
 tail -n +2 ./dist/$MODULE_NAME.d.ts > ./dist/$MODULE_NAME.d.ts.tmp
 cat ./dist/$MODULE_NAME.d.ts.tmp > ./dist/$MODULE_NAME.d.ts
-rm ./dist/interfaces.d.ts ./dist/$MODULE_NAME.d.ts.tmp
+rm -rf ./dist/interfaces.d.ts ./dist/$MODULE_NAME.d.ts.tmp

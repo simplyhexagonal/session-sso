@@ -15,9 +15,6 @@ import {
   SSOProvider,
 } from './interfaces';
 
-// @ts-ignore
-export { version } from '../package.json';
-
 const ssoProviders: Partial<SSOProviderMap> = {
   google: googleProvider,
   facebook: facebookProvider,

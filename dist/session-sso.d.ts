@@ -1,4 +1,3 @@
-export { version } from '../package.json';
 declare class SessionSSO {
     defaultProvider: keyof SSOProviderMap;
     defaultGenerator: keyof SSOGeneratorMap;

@@ -22,15 +22,13 @@ var __toModule = (module2) => {
   return __reExport(__markAsModule(__defProp(module2 != null ? __create(__getProtoOf(module2)) : {}, "default", module2 && module2.__esModule && "default" in module2 ? { get: () => module2.default, enumerable: true } : { value: module2, enumerable: true })), module2);
 };
 __export(exports, {
-  default: () => src_default,
-  version: () => import_package.version
+  default: () => src_default
 });
 var import_google = __toModule(require("./providers/google"));
 var import_facebook = __toModule(require("./providers/facebook"));
 var import_github = __toModule(require("./providers/github"));
 var import_custom = __toModule(require("./providers/custom"));
 var import_custom2 = __toModule(require("./generators/custom"));
-var import_package = __toModule(require("../package.json"));
 const ssoProviders = {
   google: import_google.default,
   facebook: import_facebook.default,
@@ -82,8 +80,7 @@ class SessionSSO {
 }
 var src_default = SessionSSO;
 // Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-  version
-});
+0 && (module.exports = {});
 //# sourceMappingURL=session-sso.js.map
 'undefined'!=typeof module&&(module.exports=SessionSSO),'undefined'!=typeof window&&(SessionSSO=SessionSSO);
+// 1.0.0

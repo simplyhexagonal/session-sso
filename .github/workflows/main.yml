@@ -32,4 +32,8 @@ jobs:
         run: pnpm i
 
       - name: Test
+        env:
+          CUSTOM_CERT_URL_TOKEN: ${{ secrets.CUSTOM_CERT_URL_TOKEN }}
+          CUSTOM_PRIVATE_CERTS_URL: ${{ secrets.CUSTOM_PRIVATE_CERTS_URL }}
+          CUSTOM_PUBLIC_CERTS_URL: ${{ secrets.CUSTOM_PUBLIC_CERTS_URL }}
         run: pnpm test

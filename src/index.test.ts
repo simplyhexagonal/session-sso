@@ -1,12 +1,13 @@
 require('dotenv').config();
 import assert from 'assert';
-import SSOUtils from '../dist/utils';
-import SessionSSO, {
+import SSOUtils from './utils';
+import SessionSSO from './';
+import {
   PRIVKeyPromisePayload,
   PUBKeyPromisePayload,
   SSOPromiseResultFail,
   SSOPromiseResultSuccess,
-} from '../dist/session-sso';
+} from './interfaces';
 import axios from 'axios';
 
 const {

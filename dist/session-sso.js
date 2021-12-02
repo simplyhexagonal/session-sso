@@ -83,4 +83,4 @@ var src_default = SessionSSO;
 0 && (module.exports = {});
 //# sourceMappingURL=session-sso.js.map
 'undefined'!=typeof module&&(module.exports=SessionSSO),'undefined'!=typeof window&&(SessionSSO=SessionSSO);
-// 2.0.2
+// 2.0.3

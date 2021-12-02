@@ -33,11 +33,11 @@ var custom_default = ({
     try {
       authorizationPromise.then((payload) => {
         privateKeyPromise.then(({
-          kid: keyid,
+          kid,
           pem: privateKey
         }) => {
           resolve({
-            token: import_jsonwebtoken.default.sign(payload, privateKey, { algorithm: "RS256", keyid })
+            token: import_jsonwebtoken.default.sign(payload, privateKey, { algorithm: "RS256", header: { alg: "RS256", kid } })
           });
         }).catch((e) => {
           reject(e.message);

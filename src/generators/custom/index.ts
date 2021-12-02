@@ -17,11 +17,11 @@ export default <SSOGenerator>((
       (authorizationPromise as Promise<AuthorizationPromisePayload>).then(
         (payload: AuthorizationPromisePayload) => {
           (privateKeyPromise as Promise<PRIVKeyPromisePayload>).then(({
-            kid: keyid,
+            kid,
             pem: privateKey,
           }) => {
             resolve({
-              token: jwt.sign(payload, privateKey, { algorithm: 'RS256', keyid, }),
+              token: jwt.sign(payload, privateKey, { algorithm: 'RS256', header: { alg: 'RS256', kid }, }),
             });
           }).catch((e: any) => {
             reject(e.message);

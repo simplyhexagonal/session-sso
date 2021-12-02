@@ -20,4 +20,4 @@ SSOUtils.normalizeServerResponse = (res) => {
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {});
 //# sourceMappingURL=index.js.map
-'undefined'!=typeof module&&(module.exports=SSOUtils.default),'undefined'!=typeof window&&(SSOUtils=SSOUtils.default);
+'undefined'!=typeof module&&(module.exports=SSOUtils),'undefined'!=typeof window&&(SSOUtils=SSOUtils);
